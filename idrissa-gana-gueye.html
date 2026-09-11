@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light"/>
+<meta name="theme-color" content="#ffffff"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Idrissa Gana Gueye — Milieu récupérateur · Everton FC · Sénégal</title>
+<meta name="description" content="Portfolio d'Idrissa Gana Gueye, milieu récupérateur d'Everton FC et international sénégalais."/>
+<style>
+/* ═══════════════════════════════════════════
+   IDRISSA GANA GUEYE — maquette de présentation
+   Fond blanc · vert / jaune / rouge du Sénégal
+   Zéro requête externe.
+   ═══════════════════════════════════════════ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  /* « only » interdit à Chrome et Samsung Internet d'assombrir automatiquement
+     la page quand le téléphone est en mode sombre */
+  color-scheme:light only;
+  --blanc:#ffffff;
+  --gris:#f5f5f3;
+  --gris-2:#ebebe7;
+  --noir:#0b0b0b;
+  --noir-2:rgba(11,11,11,.66);
+  --noir-3:rgba(11,11,11,.42);
+  --trait:rgba(11,11,11,.12);
+  --trait-fin:rgba(11,11,11,.07);
+
+  --vert:#00853f;
+  --vert-fonce:#005326;
+  --jaune:#fcd116;
+  --rouge:#e31b23;
+
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","Roboto Mono",Menlo,monospace;
+
+  --r:18px;
+  --r-g:32px;
+}
+
+html{scroll-behavior:smooth;overflow-x:clip;}
+body{
+  background:var(--blanc);color:var(--noir);
+  font-family:var(--ui);font-size:16px;line-height:1.65;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  letter-spacing:-0.011em;
+}
+::selection{background:var(--jaune);color:var(--noir);}
+:focus-visible{outline:2px solid var(--vert);outline-offset:3px;border-radius:4px;}
+img{display:block;max-width:100%;}
+
+.large{width:min(1280px,100% - 56px);margin-inline:auto;}
+
+/* Drapeau du Sénégal — bandes verticales + étoile verte sur la bande jaune */
+.drapeau{
+  width:34px;height:23px;border-radius:3px;display:block;flex-shrink:0;
+  box-shadow:0 0 0 1px rgba(11,11,11,.14);
+}
+.drapeau.grand{width:52px;height:35px;}
+
+.oeil{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--noir-3);
+}
+.rubrique{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.rubrique .num{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--vert);}
+
+h2.titre{
+  font-size:clamp(38px,6.2vw,86px);font-weight:820;
+  line-height:.98;letter-spacing:-0.045em;
+}
+.titre .vert{color:var(--vert);}
+.titre .rouge{color:var(--rouge);}
+.chapeau{font-size:17px;color:var(--noir-2);max-width:56ch;margin-top:22px;line-height:1.75;}
+
+/* ══ PROGRESSION ══ */
+.progression{position:fixed;top:0;left:0;right:0;height:4px;z-index:95;display:flex;transform-origin:0 50%;transform:scaleX(0);}
+.progression i{flex:1;}
+.progression i:nth-child(1){background:var(--vert);}
+.progression i:nth-child(2){background:var(--jaune);}
+.progression i:nth-child(3){background:var(--rouge);}
+
+/* ══ EN-TÊTE ══ */
+.entete{
+  position:fixed;top:0;left:0;right:0;z-index:90;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 34px;border-bottom:1px solid transparent;
+  transition:background .4s,border-color .4s,padding .4s;
+}
+.entete.posee{
+  background:rgba(255,255,255,.88);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  border-bottom-color:var(--trait);padding:13px 34px;
+}
+.sceau{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--noir);}
+.sceau-nom{font-size:16px;font-weight:800;letter-spacing:-0.03em;}
+.menu{display:flex;gap:2px;list-style:none;}
+.menu a{
+  font-size:13px;font-weight:550;color:var(--noir-3);text-decoration:none;
+  padding:8px 14px;border-radius:99px;transition:color .25s,background .25s;
+}
+.menu a:hover{color:var(--noir);background:var(--gris);}
+.cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 21px;border-radius:99px;border:none;cursor:pointer;
+  background:var(--noir);color:var(--blanc);
+  font-family:var(--ui);font-size:13px;font-weight:650;letter-spacing:-0.01em;
+  text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.25,1),background .3s;
+}
+.cta:hover{transform:translateY(-2px);background:var(--vert);}
+.hamburger{display:none;width:42px;height:42px;border-radius:99px;background:var(--gris);border:none;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;}
+.hamburger span{width:16px;height:2px;background:var(--noir);border-radius:2px;}
+
+.voile{
+  position:fixed;inset:0;z-index:96;background:var(--blanc);
+  display:flex;flex-direction:column;justify-content:center;padding:36px;
+  opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;
+}
+.voile.ouvert{opacity:1;visibility:visible;}
+.voile a{
+  font-size:clamp(28px,7.5vw,42px);font-weight:800;letter-spacing:-0.04em;
+  color:var(--noir);text-decoration:none;padding:13px 0;
+  border-bottom:1px solid var(--trait);display:flex;align-items:baseline;gap:14px;
+}
+.voile a i{font-family:var(--mono);font-size:12px;font-style:normal;color:var(--vert);}
+.voile .fermer{position:absolute;top:26px;right:30px;width:44px;height:44px;border-radius:99px;background:var(--gris);border:none;font-size:19px;cursor:pointer;}
+
+/* ══ HERO ══ */
+.hero{padding:132px 0 0;}
+.hero-grille{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(32px,5vw,72px);align-items:end;}
+.hero-nom{
+  /* line-height serre : la marge haute doit absorber les accents (É, À) */
+  font-size:clamp(56px,12vw,168px);font-weight:850;
+  line-height:.86;letter-spacing:-0.06em;margin:40px 0 0;
+}
+.hero-nom .b{display:block;}
+.hero-nom .b:last-child{color:var(--vert);}
+.hero-intro{font-size:clamp(16px,1.8vw,19px);color:var(--noir-2);max-width:44ch;margin-top:30px;line-height:1.75;}
+.hero-intro b{color:var(--noir);font-weight:650;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:32px;}
+.cta.clair{background:var(--gris);color:var(--noir);}
+.cta.clair:hover{background:var(--gris-2);transform:translateY(-2px);}
+
+/* Portrait */
+.portrait{
+  position:relative;aspect-ratio:4/5;border-radius:var(--r-g);overflow:hidden;
+  background:var(--gris);
+  display:flex;align-items:center;justify-content:center;
+}
+/* Bandeau drapeau : trois bandes + étoile verte centrée sur le jaune.
+   Le jaune occupe le tiers central, son milieu tombe donc exactement à 50 %. */
+.bande-drapeau{
+  position:absolute;left:0;right:0;bottom:0;height:18px;z-index:2;
+  background:linear-gradient(90deg,var(--vert) 0 33.333%,var(--jaune) 33.333% 66.666%,var(--rouge) 66.666% 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.bande-drapeau svg{width:12px;height:12px;display:block;}
+.portrait img{width:100%;height:100%;object-fit:cover;}
+.portrait-num{font-size:clamp(120px,22vw,240px);font-weight:850;color:rgba(11,11,11,.055);letter-spacing:-0.06em;line-height:1;}
+.portrait-note{position:absolute;top:22px;left:22px;padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);}
+
+/* Bande de repères */
+.reperes{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  margin-top:clamp(44px,5vw,64px);border-top:1px solid var(--trait);
+}
+.repere{padding:24px 22px 26px 0;border-right:1px solid var(--trait);}
+.repere:last-child{border-right:none;}
+.repere-val{font-size:clamp(24px,2.7vw,32px);font-weight:800;letter-spacing:-0.04em;line-height:1;}
+.repere-cle{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--noir-3);margin-top:9px;}
+
+/* ══ BANDEAU ══ */
+.bandeau{margin-top:clamp(56px,7vw,90px);background:var(--noir);color:var(--blanc);overflow:hidden;display:flex;padding:16px 0;}
+.piste{display:flex;white-space:nowrap;animation:file 40s linear infinite;}
+@keyframes file{to{transform:translateX(-50%);}}
+.piste span{font-size:14px;font-weight:650;letter-spacing:-0.01em;padding:0 22px;display:inline-flex;align-items:center;gap:22px;}
+.piste span::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--jaune);}
+.piste span:nth-child(3n)::after{background:var(--vert);}
+.piste span:nth-child(3n+1)::after{background:var(--rouge);}
+
+/* ══ SECTIONS ══ */
+.section{padding:clamp(80px,10vw,140px) 0;}
+.tete{max-width:720px;margin-bottom:clamp(44px,5vw,72px);}
+
+/* ── 01 Profil ── */
+.profil-grille{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,64px);align-items:start;}
+.fiche{border-top:2px solid var(--noir);}
+.fiche-ligne{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:17px 0;border-bottom:1px solid var(--trait);}
+.fiche-cle{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--noir-3);}
+.fiche-val{font-size:16px;font-weight:600;text-align:right;letter-spacing:-0.02em;}
+
+.attributs{display:flex;flex-direction:column;gap:18px;}
+.attribut{}
+.attribut-haut{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;}
+.attribut-nom{font-size:14px;font-weight:600;}
+.attribut-val{font-family:var(--mono);font-size:12px;color:var(--noir-3);}
+.barre{height:7px;border-radius:99px;background:var(--gris-2);overflow:hidden;}
+.barre i{display:block;height:100%;border-radius:99px;width:0;transition:width 1.4s cubic-bezier(.2,.8,.25,1);}
+.attribut:nth-child(3n+1) .barre i{background:var(--vert);}
+.attribut:nth-child(3n+2) .barre i{background:var(--jaune);}
+.attribut:nth-child(3n+3) .barre i{background:var(--rouge);}
+.note-attributs{font-size:12.5px;color:var(--noir-3);margin-top:18px;font-style:italic;}
+
+/* ── 02 Statistiques ── */
+.stats{background:var(--gris);}
+.stats-grille{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.stat{background:var(--blanc);border-radius:var(--r);padding:32px 28px;transition:transform .45s cubic-bezier(.2,.8,.25,1),box-shadow .45s;}
+.stat:hover{transform:translateY(-6px);box-shadow:0 20px 46px -22px rgba(11,11,11,.3);}
+.stat-val{font-size:clamp(48px,6.4vw,72px);font-weight:850;letter-spacing:-0.055em;line-height:1;}
+.stat:nth-child(1) .stat-val{color:var(--vert);}
+.stat:nth-child(2) .stat-val{color:var(--rouge);}
+.stat:nth-child(3) .stat-val{color:var(--noir);}
+.stat:nth-child(4) .stat-val{color:var(--vert-fonce);}
+.stat-nom{font-size:14.5px;font-weight:700;margin-top:16px;letter-spacing:-0.02em;}
+.stat-det{font-size:13px;color:var(--noir-3);margin-top:5px;}
+.stats-note{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--noir-3);margin-top:26px;}
+
+/* ── 03 Parcours ── */
+.clubs{border-top:2px solid var(--noir);}
+.club{
+  display:grid;grid-template-columns:132px 1fr 150px;gap:28px;align-items:baseline;
+  padding:28px 0;border-bottom:1px solid var(--trait);
+  transition:padding-left .45s cubic-bezier(.2,.8,.25,1),background .45s;
+  position:relative;
+}
+.club::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--vert);transform:scaleY(0);transform-origin:top;transition:transform .4s;}
+.club:hover::before{transform:scaleY(1);}
+.club:hover{padding-left:18px;background:var(--gris);}
+.club-per{font-family:var(--mono);font-size:13px;color:var(--noir-3);letter-spacing:.02em;}
+.club-nom{font-size:clamp(21px,2.6vw,30px);font-weight:780;letter-spacing:-0.035em;}
+.club-txt{font-size:14px;color:var(--noir-2);margin-top:7px;max-width:54ch;}
+.club-lieu{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--noir-3);text-align:right;}
+.club.present .club-nom{color:var(--vert);}
+.club.present .club-per{color:var(--vert);font-weight:600;}
+
+/* ── 04 Sélection ── */
+.selection{background:var(--vert);color:var(--blanc);}
+.selection .oeil,.selection .rubrique .num{color:rgba(255,255,255,.62);}
+.selection .chapeau{color:rgba(255,255,255,.78);}
+.selection .titre .vert{color:var(--jaune);}
+/* Sur fond vert, le drapeau a besoin d'un contour clair pour se détacher */
+.selection .drapeau{box-shadow:0 0 0 1px rgba(255,255,255,.55);}
+.sel-grille{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,5vw,68px);align-items:start;}
+.sel-chiffres{display:flex;flex-direction:column;gap:0;border-top:2px solid rgba(255,255,255,.3);}
+.sel-ligne{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:19px 0;border-bottom:1px solid rgba(255,255,255,.2);}
+.sel-cle{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.58);}
+.sel-val{font-size:17px;font-weight:650;letter-spacing:-0.02em;}
+.sel-val.or{color:var(--jaune);}
+.sel-texte{font-size:16px;color:rgba(255,255,255,.82);line-height:1.85;}
+.sel-texte + .sel-texte{margin-top:18px;}
+
+/* ── 05 Moments ── */
+.moments{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.moment{
+  border-radius:var(--r);padding:30px 28px;background:var(--gris);
+  display:flex;flex-direction:column;min-height:250px;
+  transition:transform .45s cubic-bezier(.2,.8,.25,1),background .45s;
+  position:relative;overflow:hidden;
+}
+.moment:hover{transform:translateY(-6px);}
+.moment::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--gris-2);}
+.moment.v::before{background:var(--vert);}
+.moment.j::before{background:var(--jaune);}
+.moment.r::before{background:var(--rouge);}
+.moment-date{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.1em;color:var(--noir-3);}
+.moment-nom{font-size:21px;font-weight:780;letter-spacing:-0.032em;margin-top:14px;line-height:1.2;}
+.moment-txt{font-size:14px;color:var(--noir-2);margin-top:11px;flex:1;line-height:1.7;}
+.moment-tag{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--noir-3);margin-top:18px;padding-top:14px;border-top:1px solid var(--trait);}
+.moment.phare{background:var(--noir);color:var(--blanc);}
+.moment.phare .moment-date{color:rgba(255,255,255,.55);}
+.moment.phare .moment-txt{color:rgba(255,255,255,.72);}
+.moment.phare .moment-tag{color:var(--jaune);border-top-color:rgba(255,255,255,.2);}
+
+/* ── 06 Palmarès ── */
+.palmares{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.trophee{border-radius:var(--r);padding:34px 30px;border:1px solid var(--trait);transition:transform .45s cubic-bezier(.2,.8,.25,1),border-color .45s;}
+.trophee:hover{transform:translateY(-6px);border-color:var(--noir);}
+.trophee-an{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--noir-3);}
+.trophee-nom{font-size:26px;font-weight:800;letter-spacing:-0.04em;margin-top:14px;line-height:1.15;}
+.trophee-txt{font-size:14px;color:var(--noir-2);margin-top:12px;line-height:1.7;}
+.trophee.or{background:var(--jaune);border-color:var(--jaune);}
+.trophee.or .trophee-an{color:rgba(11,11,11,.6);}
+
+/* ── 07 Galerie ── */
+.galerie{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.vue{
+  position:relative;border-radius:var(--r);overflow:hidden;background:var(--gris);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .4s;
+}
+.vue:hover{background:var(--gris-2);}
+.vue img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.25,1);}
+.vue:hover img{transform:scale(1.05);}
+.vue-vide{text-align:center;padding:18px;}
+.vue-fmt{font-family:var(--mono);font-size:11px;color:var(--noir-3);margin-top:6px;}
+.vue.a{grid-column:span 3;aspect-ratio:3/2;}
+.vue.b{grid-column:span 3;aspect-ratio:3/2;}
+.vue.c{grid-column:span 2;aspect-ratio:1;}
+.vue.d{grid-column:span 2;aspect-ratio:1;}
+.vue.e{grid-column:span 2;aspect-ratio:1;}
+
+/* ── 08 Médias & partenariats ── */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.panneau{border-radius:var(--r-g);padding:clamp(30px,4vw,48px);border:1px solid var(--trait);}
+.panneau.sombre{background:var(--noir);color:var(--blanc);border-color:var(--noir);}
+.panneau.sombre .oeil{color:rgba(255,255,255,.5);}
+.panneau-titre{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-0.04em;margin-top:16px;line-height:1.1;}
+.panneau-txt{font-size:15px;color:var(--noir-2);margin-top:16px;line-height:1.75;}
+.panneau.sombre .panneau-txt{color:rgba(255,255,255,.72);}
+.liste{margin-top:24px;display:flex;flex-direction:column;gap:0;}
+.liste-item{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--trait);font-size:14px;}
+.panneau.sombre .liste-item{border-bottom-color:rgba(255,255,255,.16);}
+.liste-item span:last-child{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--noir-3);}
+.panneau.sombre .liste-item span:last-child{color:rgba(255,255,255,.5);}
+.emplacements{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px;}
+.logo-vide{aspect-ratio:5/3;border-radius:12px;border:1px dashed var(--trait);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--noir-3);text-align:center;padding:8px;}
+
+/* ── 09 Contact ── */
+.contact{background:var(--gris);}
+.portes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.porte{background:var(--blanc);border-radius:var(--r);padding:30px 28px;transition:transform .45s cubic-bezier(.2,.8,.25,1),box-shadow .45s;}
+.porte:hover{transform:translateY(-6px);box-shadow:0 20px 46px -22px rgba(11,11,11,.3);}
+.porte-nom{font-size:19px;font-weight:750;letter-spacing:-0.03em;margin-top:14px;}
+.porte-txt{font-size:14px;color:var(--noir-2);margin-top:10px;line-height:1.7;}
+.porte-lien{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-size:13px;font-weight:650;color:var(--noir);text-decoration:none;border-bottom:2px solid var(--vert);padding-bottom:3px;transition:gap .3s,color .3s;}
+.porte-lien:hover{gap:11px;color:var(--vert);}
+
+/* ── Pied ── */
+.pied{padding:56px 0 44px;border-top:1px solid var(--trait);}
+.pied-haut{display:flex;justify-content:space-between;align-items:center;gap:26px;flex-wrap:wrap;}
+.pied-liens{display:flex;gap:6px;flex-wrap:wrap;}
+.pied-liens a{font-size:13px;color:var(--noir-3);text-decoration:none;padding:7px 13px;border-radius:99px;transition:color .25s,background .25s;}
+.pied-liens a:hover{color:var(--noir);background:var(--gris);}
+.pied-bas{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:34px;padding-top:24px;border-top:1px solid var(--trait);font-size:12.5px;color:var(--noir-3);}
+.mention{margin-top:22px;padding:15px 18px;border-radius:12px;background:var(--gris);font-size:11.5px;line-height:1.85;color:var(--noir-3);}
+
+/* ── Apparitions ── */
+.monte{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.8,.25,1),transform .9s cubic-bezier(.2,.8,.25,1);}
+.monte.vu{opacity:1;transform:none;}
+
+/* ── Responsive ── */
+@media(max-width:1040px){
+  .large{width:calc(100% - 40px);}
+  .hero-grille{grid-template-columns:1fr;gap:44px;}
+  .hero-visuel{order:-1;max-width:330px;}
+  .reperes{grid-template-columns:1fr 1fr 1fr;}
+  .repere{padding:20px 18px 22px 0;}
+  .repere:nth-child(3){border-right:none;}
+  .profil-grille{grid-template-columns:1fr;gap:44px;}
+  .stats-grille{grid-template-columns:1fr 1fr;}
+  .club{grid-template-columns:104px 1fr;gap:20px;}
+  .club-lieu{grid-column:2;text-align:left;margin-top:9px;}
+  .sel-grille{grid-template-columns:1fr;gap:40px;}
+  .moments{grid-template-columns:1fr 1fr;}
+  .palmares{grid-template-columns:1fr;}
+  .galerie{grid-template-columns:repeat(2,1fr);}
+  .vue.a,.vue.b,.vue.c,.vue.d,.vue.e{grid-column:span 2;aspect-ratio:3/2;}
+  .duo{grid-template-columns:1fr;}
+  .portes{grid-template-columns:1fr;}
+}
+@media(max-width:720px){
+  .large{width:calc(100% - 32px);}
+  .entete{padding:15px 20px;}
+  .entete.posee{padding:11px 20px;}
+  .menu,.entete .cta{display:none;}
+  .hamburger{display:flex;}
+  .reperes{grid-template-columns:1fr 1fr;}
+  .repere{border-right:none;border-bottom:1px solid var(--trait);padding:18px 0;}
+  .repere:last-child{border-bottom:none;}
+  .stats-grille{grid-template-columns:1fr;}
+  .moments{grid-template-columns:1fr;}
+  .galerie{grid-template-columns:1fr;}
+  .vue.a,.vue.b,.vue.c,.vue.d,.vue.e{grid-column:span 1;}
+  .emplacements{grid-template-columns:1fr 1fr;}
+}
+
+/* Le portfolio reste identique en mode sombre : les couleurs du drapeau
+   ne supportent pas une inversion automatique. */
+@media(prefers-color-scheme:dark){
+  :root{
+    --blanc:#ffffff;--gris:#f5f5f3;--gris-2:#ebebe7;
+    --noir:#0b0b0b;--noir-2:rgba(11,11,11,.66);--noir-3:rgba(11,11,11,.42);
+    --trait:rgba(11,11,11,.12);--trait-fin:rgba(11,11,11,.07);
+  }
+  body{background:#fff;color:#0b0b0b;}
+  .stat,.porte{background:#fff;}
+  .portrait,.vue,.moment{background:#f5f5f3;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
+  html{scroll-behavior:auto;}
+  .monte{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="progression" id="progression"><i></i><i></i><i></i></div>
+
+<header class="entete" id="entete">
+  <a href="#haut" class="sceau">
+    <svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg>
+    <span class="sceau-nom">Gana Gueye</span>
+  </a>
+  <nav><ul class="menu">
+    <li><a href="#profil">Profil</a></li>
+    <li><a href="#stats">Statistiques</a></li>
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#selection">Sélection</a></li>
+    <li><a href="#moments">Moments</a></li>
+    <li><a href="#palmares">Palmarès</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+  </ul></nav>
+  <a href="#contact" class="cta">Contact</a>
+  <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="voile" id="voile">
+  <button class="fermer" id="fermer" aria-label="Fermer le menu">✕</button>
+  <a href="#profil"><i>01</i>Profil</a>
+  <a href="#stats"><i>02</i>Statistiques</a>
+  <a href="#parcours"><i>03</i>Parcours</a>
+  <a href="#selection"><i>04</i>Sélection</a>
+  <a href="#moments"><i>05</i>Moments</a>
+  <a href="#palmares"><i>06</i>Palmarès</a>
+  <a href="#galerie"><i>07</i>Galerie</a>
+  <a href="#contact"><i>09</i>Contact</a>
+</div>
+
+<main>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="haut">
+  <div class="large">
+    <div class="hero-grille">
+      <div>
+        <svg class="drapeau grand" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg>
+        <h1 class="hero-nom"><span class="b">Gana</span><span class="b">Gueye</span></h1>
+        <p class="hero-intro">
+          Milieu récupérateur d'<b>Everton</b>, cadre historique des <b>Lions de la Teranga</b>.
+          Trois fois champion de France, deux fois champion d'Afrique, plus de
+          quatre cents matchs dans les grands championnats européens.
+        </p>
+        <div class="hero-actions">
+          <a href="#parcours" class="cta">Découvrir le parcours</a>
+          <a href="#contact" class="cta clair">Prendre contact</a>
+        </div>
+      </div>
+
+      <div class="hero-visuel">
+        <div class="portrait">
+          <div class="bande-drapeau" aria-hidden="true">
+            <svg viewBox="20 8 20 24" focusable="false">
+              <polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/>
+            </svg>
+          </div>
+          <img src="1.jpg" alt="Photo maîtrese">
+          <!-- <div class="portrait-num">18</div> -->
+          <!-- <div class="portrait-note oeil">Portrait · 4 : 5</div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="reperes monte">
+      <div class="repere"><div class="repere-val">1989</div><div class="repere-cle">Naissance</div></div>
+      <div class="repere"><div class="repere-val">1,74 m</div><div class="repere-cle">Taille</div></div>
+      <div class="repere"><div class="repere-val">Milieu</div><div class="repere-cle">Poste</div></div>
+      <div class="repere"><div class="repere-val">Droit</div><div class="repere-cle">Pied fort</div></div>
+      <div class="repere"><div class="repere-val">n°27</div><div class="repere-cle">Everton</div></div>
+    </div>
+  </div>
+
+  <div class="bandeau" aria-hidden="true">
+    <div class="piste">
+      <span>Everton FC</span><span>Sénégal</span><span>Champion d'Afrique 2021</span>
+      <span>Champion d'Afrique 2025</span><span>Trois fois champion de France</span>
+      <span>Paris Saint-Germain</span><span>LOSC Lille</span><span>Aston Villa</span>
+      <span>Everton FC</span><span>Sénégal</span><span>Champion d'Afrique 2021</span>
+      <span>Champion d'Afrique 2025</span><span>Trois fois champion de France</span>
+      <span>Paris Saint-Germain</span><span>LOSC Lille</span><span>Aston Villa</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 01 · PROFIL ══ -->
+<section class="section large" id="profil">
+  <div class="tete monte">
+    <div class="rubrique"><span class="num">01</span><svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg></div>
+    <h2 class="titre">Le <span class="vert">récupérateur</span></h2>
+    <p class="chapeau">
+      1,74 m et 66 kg : un gabarit léger qui compense par le volume de course et
+      la lecture du jeu. En 2024/2025, aucun joueur de Premier League n'a réussi
+      plus de tacles que lui.
+    </p>
+  </div>
+
+  <div class="profil-grille">
+    <div class="monte">
+      <div class="fiche">
+        <div class="fiche-ligne"><span class="fiche-cle">Nom complet</span><span class="fiche-val">Idrissa Gana Gueye</span></div>
+        <div class="fiche-ligne"><span class="fiche-cle">Date de naissance</span><span class="fiche-val">26 septembre 1989</span></div>
+        <div class="fiche-ligne"><span class="fiche-cle">Lieu</span><span class="fiche-val">Dakar, Sénégal</span></div>
+        <div class="fiche-ligne"><span class="fiche-cle">Nationalité</span><span class="fiche-val">Sénégalaise</span></div>
+        <div class="fiche-ligne"><span class="fiche-cle">Taille · Poids</span><span class="fiche-val">1,74 m · 66 kg</span></div>
+        <div class="fiche-ligne"><span class="fiche-cle">Poste</span><span class="fiche-val">Milieu récupérateur</span></div>
+        <div class="fiche-ligne"><span class="fiche-cle">Pied fort</span><span class="fiche-val">Droit</span></div>
+        <div class="fiche-ligne"><span class="fiche-cle">Club</span><span class="fiche-val">Everton FC — n°27</span></div>
+        <div class="fiche-ligne"><span class="fiche-cle">Contrat</span><span class="fiche-val">Jusqu'en juin 2027</span></div>
+        <div class="fiche-ligne"><span class="fiche-cle">Formation</span><span class="fiche-val">Diambars, Sénégal</span></div>
+      </div>
+    </div>
+
+    <div class="monte">
+      <div class="attributs">
+        <div class="attribut">
+          <div class="attribut-haut"><span class="attribut-nom">Tacles</span><span class="attribut-val">Référence</span></div>
+          <div class="barre"><i data-part="95"></i></div>
+        </div>
+        <div class="attribut">
+          <div class="attribut-haut"><span class="attribut-nom">Interceptions</span><span class="attribut-val">Point fort</span></div>
+          <div class="barre"><i data-part="90"></i></div>
+        </div>
+        <div class="attribut">
+          <div class="attribut-haut"><span class="attribut-nom">Volume de course</span><span class="attribut-val">Point fort</span></div>
+          <div class="barre"><i data-part="88"></i></div>
+        </div>
+        <div class="attribut">
+          <div class="attribut-haut"><span class="attribut-nom">Lecture du jeu</span><span class="attribut-val">Point fort</span></div>
+          <div class="barre"><i data-part="86"></i></div>
+        </div>
+        <div class="attribut">
+          <div class="attribut-haut"><span class="attribut-nom">Conservation</span><span class="attribut-val">Solide</span></div>
+          <div class="barre"><i data-part="78"></i></div>
+        </div>
+      </div>
+      <p class="note-attributs">
+        Évaluation indicative à valider avec le staff — à remplacer par des données
+        officielles avant publication.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 02 · STATISTIQUES ══ -->
+<section class="section stats" id="stats">
+  <div class="large">
+    <div class="tete monte">
+      <div class="rubrique"><span class="num">02</span><svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg></div>
+      <h2 class="titre">La saison<br/><span class="rouge">2025 / 2026</span></h2>
+      <p class="chapeau">Everton FC — Premier League, avec une parenthèse en janvier pour la Coupe d'Afrique.</p>
+    </div>
+
+    <div class="stats-grille monte">
+      <div class="stat">
+        <div class="stat-val" data-cible="25">0</div>
+        <div class="stat-nom">Matchs de Premier League</div>
+        <div class="stat-det">Malgré un mois en sélection</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" data-cible="2">0</div>
+        <div class="stat-nom">Buts</div>
+        <div class="stat-det">Depuis un poste de sentinelle</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" data-cible="3">0</div>
+        <div class="stat-nom">Passes décisives</div>
+        <div class="stat-det">Toutes compétitions</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" data-cible="462" data-groupe="1">0</div>
+        <div class="stat-nom">Matchs en carrière</div>
+        <div class="stat-det">Dans les cinq grands championnats, depuis 2010</div>
+      </div>
+    </div>
+
+    <p class="stats-note monte">Chiffres à rafraîchir en fin de saison</p>
+  </div>
+</section>
+
+<!-- ══ 03 · PARCOURS ══ -->
+<section class="section large" id="parcours">
+  <div class="tete monte">
+    <div class="rubrique"><span class="num">03</span><svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg></div>
+    <h2 class="titre">Le <span class="vert">parcours</span></h2>
+    <p class="chapeau">Seize saisons professionnelles, quatre clubs, trois championnats.</p>
+  </div>
+
+  <div class="clubs">
+    <div class="club present monte">
+      <div class="club-per">2022 —</div>
+      <div>
+        <div class="club-nom">Everton FC</div>
+        <p class="club-txt">Retour à Merseyside en septembre 2022. Élu joueur de la saison du club et des supporters en 2024/2025. Contrat jusqu'en juin 2027.</p>
+      </div>
+      <div class="club-lieu">Angleterre · Premier League</div>
+    </div>
+    <div class="club monte">
+      <div class="club-per">2019 — 2022</div>
+      <div>
+        <div class="club-nom">Paris Saint-Germain</div>
+        <p class="club-txt">Transféré pour 30 M€ en juillet 2019. Deux titres de champion de France et une finale de Ligue des champions en 2020.</p>
+      </div>
+      <div class="club-lieu">France · Ligue 1</div>
+    </div>
+    <div class="club monte">
+      <div class="club-per">2016 — 2019</div>
+      <div>
+        <div class="club-nom">Everton FC</div>
+        <p class="club-txt">Premier passage de trois saisons, qui installe sa réputation de récupérateur en Premier League.</p>
+      </div>
+      <div class="club-lieu">Angleterre · Premier League</div>
+    </div>
+    <div class="club monte">
+      <div class="club-per">2015 — 2016</div>
+      <div>
+        <div class="club-nom">Aston Villa</div>
+        <p class="club-txt">Découverte de l'Angleterre après cinq saisons en Ligue 1.</p>
+      </div>
+      <div class="club-lieu">Angleterre · Premier League</div>
+    </div>
+    <div class="club monte">
+      <div class="club-per">2010 — 2015</div>
+      <div>
+        <div class="club-nom">LOSC Lille</div>
+        <p class="club-txt">Débuts professionnels et cinq saisons dans le Nord. Champion de France dès 2011.</p>
+      </div>
+      <div class="club-lieu">France · Ligue 1</div>
+    </div>
+    <div class="club monte">
+      <div class="club-per">Formation</div>
+      <div>
+        <div class="club-nom">Diambars</div>
+        <p class="club-txt">Formé à l'académie sénégalaise de Saly avant de rejoindre la France.</p>
+      </div>
+      <div class="club-lieu">Sénégal · Formation</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 04 · SÉLECTION ══ -->
+<section class="section selection" id="selection">
+  <div class="large">
+    <div class="tete monte">
+      <div class="rubrique"><span class="num">04</span><svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg></div>
+      <h2 class="titre" style="color:#fff">Lions de la <span class="vert">Teranga</span></h2>
+    </div>
+
+    <div class="sel-grille">
+      <div class="sel-chiffres monte">
+        <div class="sel-ligne"><span class="sel-cle">Sélection</span><span class="sel-val">Sénégal</span></div>
+        <div class="sel-ligne"><span class="sel-cle">Titres continentaux</span><span class="sel-val or">2021 · 2025</span></div>
+        <div class="sel-ligne"><span class="sel-cle">Coupes du monde</span><span class="sel-val">2018 · 2022 · 2026</span></div>
+        <div class="sel-ligne"><span class="sel-cle">Poste</span><span class="sel-val">Milieu récupérateur</span></div>
+        <div class="sel-ligne"><span class="sel-cle">Statut</span><span class="sel-val or">Cadre historique</span></div>
+        <div class="sel-ligne"><span class="sel-cle">Formation</span><span class="sel-val">Diambars</span></div>
+      </div>
+
+      <div class="monte">
+        <p class="sel-texte">
+          Né à Dakar et formé à Diambars, Idrissa Gana Gueye est l'un des piliers
+          les plus durables de la sélection sénégalaise. Il est de toutes les grandes
+          campagnes du pays depuis plus d'une décennie.
+        </p>
+        <p class="sel-texte">
+          En février 2022, il fait partie du groupe qui décroche la première Coupe
+          d'Afrique des nations de l'histoire du Sénégal, face à l'Égypte aux tirs au but.
+        </p>
+        <p class="sel-texte">
+          Quatre ans plus tard, à Rabat, c'est sa passe qui lance Pape Gueye sur le
+          but décisif de la finale. Un second titre continental, avant de retrouver
+          la Coupe du monde en 2026.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 05 · MOMENTS ══ -->
+<section class="section large" id="moments">
+  <div class="tete monte">
+    <div class="rubrique"><span class="num">05</span><svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg></div>
+    <h2 class="titre">Moments <span class="rouge">clés</span></h2>
+    <p class="chapeau">Six repères dans une carrière de seize saisons.</p>
+  </div>
+
+  <div class="moments">
+    <div class="moment v monte">
+      <div class="moment-date">2011</div>
+      <div class="moment-nom">Champion de France à 21 ans</div>
+      <p class="moment-txt">Deuxième saison professionnelle et premier titre majeur avec le LOSC Lille, qui réalise le doublé Championnat-Coupe.</p>
+      <div class="moment-tag">LOSC Lille</div>
+    </div>
+    <div class="moment j monte">
+      <div class="moment-date">2016</div>
+      <div class="moment-nom">L'installation à Everton</div>
+      <p class="moment-txt">Après une saison à Aston Villa, il rejoint Everton et s'y impose comme l'un des meilleurs récupérateurs de Premier League.</p>
+      <div class="moment-tag">Everton FC</div>
+    </div>
+    <div class="moment r monte">
+      <div class="moment-date">Juillet 2019</div>
+      <div class="moment-nom">Signature au PSG</div>
+      <p class="moment-txt">Transféré pour 30 M€ à Paris. Trois saisons, deux titres de champion de France et une finale de Ligue des champions en 2020.</p>
+      <div class="moment-tag">Paris Saint-Germain</div>
+    </div>
+    <div class="moment v monte">
+      <div class="moment-date">Février 2022</div>
+      <div class="moment-nom">Premier titre continental</div>
+      <p class="moment-txt">Membre du groupe sénégalais sacré champion d'Afrique face à l'Égypte, premier titre de l'histoire du pays.</p>
+      <div class="moment-tag">CAN 2021</div>
+    </div>
+    <div class="moment j monte">
+      <div class="moment-date">2024 / 2025</div>
+      <div class="moment-nom">Joueur de la saison</div>
+      <p class="moment-txt">Élu joueur de la saison d'Everton par le club et par les supporters. Aucun joueur de Premier League n'a réussi plus de tacles que lui cette année-là.</p>
+      <div class="moment-tag">Everton FC</div>
+    </div>
+    <div class="moment phare monte">
+      <div class="moment-date">18 janvier 2026</div>
+      <div class="moment-nom">La passe du titre</div>
+      <p class="moment-txt">En finale à Rabat, il sert Pape Gueye sur le but de la 94ᵉ minute qui offre au Sénégal son deuxième titre continental.</p>
+      <div class="moment-tag">CAN 2025 · Rabat</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 06 · PALMARÈS ══ -->
+<section class="section large" id="palmares">
+  <div class="tete monte">
+    <div class="rubrique"><span class="num">06</span><svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg></div>
+    <h2 class="titre">Le <span class="vert">palmarès</span></h2>
+  </div>
+
+  <div class="palmares">
+    <div class="trophee or monte">
+      <div class="trophee-an">2021 &amp; 2025 · Afrique</div>
+      <div class="trophee-nom">Champion d'Afrique</div>
+      <p class="trophee-txt">Deux titres continentaux avec le Sénégal, au Cameroun puis au Maroc. Passeur décisif sur le but de la finale 2025.</p>
+    </div>
+    <div class="trophee monte">
+      <div class="trophee-an">2011 · 2020 · 2022</div>
+      <div class="trophee-nom">Champion de France</div>
+      <p class="trophee-txt">Trois titres de Ligue 1, le premier avec le LOSC Lille, les deux suivants avec le Paris Saint-Germain. Également vainqueur de la Coupe de France.</p>
+    </div>
+    <div class="trophee monte">
+      <div class="trophee-an">2024 / 2025 · Angleterre</div>
+      <div class="trophee-nom">Joueur de la saison</div>
+      <p class="trophee-txt">Distinction décernée par Everton et par ses supporters, à trente-cinq ans.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 · GALERIE ══ -->
+<section class="section large" id="galerie">
+  <div class="tete monte">
+    <div class="rubrique"><span class="num">07</span><svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg></div>
+    <h2 class="titre">La <span class="rouge">galerie</span></h2>
+    <p class="chapeau">Cinq emplacements calés au format. Ils reçoivent les photos officielles sans retoucher la mise en page.</p>
+  </div>
+
+  <div class="galerie monte">
+    <div class="vue a"><div class="vue-vide"><div class="oeil"><img src="2.jpg" alt="Photo maîtrese"></div><div class="vue-fmt">1800 × 1200</div></div></div>
+    <div class="vue b"><div class="vue-vide"><div class="oeil"><img src="3.jpg" alt="En sélection"></div><div class="vue-fmt">1800 × 1200</div></div></div>
+    <div class="vue c"><div class="vue-vide"><div class="oeil"><img src="4.jpg" alt="Action"></div><div class="vue-fmt">1000 × 1000</div></div></div>
+    <div class="vue d"><div class="vue-vide"><div class="oeil"><img src="5.jpg" alt="Portrai"></div><div class="vue-fmt">1000 × 1000</div></div></div>
+    <div class="vue e"><div class="vue-vide"><div class="oeil"><img src="6.jpg" alt="Hors terrain"></div><div class="vue-fmt">1000 × 1000</div></div></div>
+  </div>
+</section>
+
+<!-- ══ 08 · MÉDIAS & PARTENARIATS ══ -->
+<section class="section large" id="medias">
+  <div class="tete monte">
+    <div class="rubrique"><span class="num">08</span><svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg></div>
+    <h2 class="titre">Médias &amp;<br/><span class="vert">partenariats</span></h2>
+  </div>
+
+  <div class="duo monte">
+    <div class="panneau">
+      <span class="oeil">Espace presse</span>
+      <div class="panneau-titre">Ressources pour la presse</div>
+      <p class="panneau-txt">
+        Dossier de presse, visuels haute définition et éléments biographiques
+        téléchargeables, mis à jour à chaque fenêtre de transfert.
+      </p>
+      <div class="liste">
+        <div class="liste-item"><span>Biographie officielle</span><span>À fournir</span></div>
+        <div class="liste-item"><span>Photos haute définition</span><span>À fournir</span></div>
+        <div class="liste-item"><span>Fiche statistiques</span><span>À fournir</span></div>
+        <div class="liste-item"><span>Logo &amp; identité</span><span>À fournir</span></div>
+      </div>
+    </div>
+
+    <div class="panneau sombre">
+      <span class="oeil">Partenaires</span>
+      <div class="panneau-titre">Marques &amp; équipementiers</div>
+      <p class="panneau-txt">
+        Espace réservé aux partenaires actuels. Les emplacements accueillent
+        les logos une fois les accords confirmés.
+      </p>
+      <div class="emplacements">
+        <div class="logo-vide">Logo</div>
+        <div class="logo-vide">Logo</div>
+        <div class="logo-vide">Logo</div>
+        <div class="logo-vide">Logo</div>
+        <div class="logo-vide">Logo</div>
+        <div class="logo-vide">Logo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 09 · CONTACT ══ -->
+<section class="section contact" id="contact">
+  <div class="large">
+    <div class="tete monte">
+      <div class="rubrique"><span class="num">09</span><svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg></div>
+      <h2 class="titre">Prendre <span class="vert">contact</span></h2>
+      <p class="chapeau">Les demandes passent par la représentation. Chaque porte mène à la bonne personne.</p>
+    </div>
+
+    <div class="portes monte">
+      <div class="porte">
+        <span class="oeil">Sportif</span>
+        <div class="porte-nom">Clubs &amp; recrutement</div>
+        <p class="porte-txt">Sollicitations sportives, dossiers de performance, échanges avec la représentation.</p>
+        <a href="#contact" class="porte-lien">Adresse à renseigner <span>→</span></a>
+      </div>
+      <div class="porte">
+        <span class="oeil">Presse</span>
+        <div class="porte-nom">Médias &amp; interviews</div>
+        <p class="porte-txt">Demandes d'interview, accréditations, éléments biographiques et visuels validés.</p>
+        <a href="#contact" class="porte-lien">Adresse à renseigner <span>→</span></a>
+      </div>
+      <div class="porte">
+        <span class="oeil">Commercial</span>
+        <div class="porte-nom">Partenariats</div>
+        <p class="porte-txt">Marques, équipementiers, opérations d'image et engagements associatifs.</p>
+        <a href="#contact" class="porte-lien">Adresse à renseigner <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="large">
+    <div class="pied-haut">
+      <a href="#haut" class="sceau">
+        <svg class="drapeau" viewBox="0 0 60 40" aria-hidden="true" focusable="false"><rect width="20" height="40" fill="#00853f"/><rect x="20" width="20" height="40" fill="#fcd116"/><rect x="40" width="20" height="40" fill="#e31b23"/><polygon fill="#00853f" points="30.00,11.60 31.97,17.29 37.99,17.40 33.19,21.04 34.94,26.80 30.00,23.35 25.06,26.80 26.81,21.04 22.01,17.40 28.03,17.29"/></svg>
+        <span class="sceau-nom">Gana Gueye</span>
+      </a>
+      <nav class="pied-liens">
+        <a href="#profil">Profil</a><a href="#stats">Statistiques</a><a href="#parcours">Parcours</a>
+        <a href="#selection">Sélection</a><a href="#moments">Moments</a><a href="#palmares">Palmarès</a>
+        <a href="#galerie">Galerie</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="pied-bas">
+      <div>© 2026 · Tous droits réservés</div>
+      <div>Site réalisé par <strong style="color:var(--noir-2);font-weight:650">BV Digital Agency</strong> · Lille</div>
+    </div>
+    <p class="mention">
+      Maquette de présentation — document non officiel, non validé par le joueur ni par ses
+      représentants. Diffusion restreinte. Aucune donnée personnelle collectée, aucun cookie
+      déposé, aucune requête vers un serveur tiers.
+    </p>
+  </div>
+</footer>
+
+
+<script>
+"use strict";
+var reduit=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* En-tête + progression */
+(function(){
+  var e=document.getElementById("entete"), p=document.getElementById("progression");
+  function f(){
+    var y=window.scrollY;
+    e.classList.toggle("posee",y>30);
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    p.style.transform="scaleX("+(max>0?Math.min(y/max,1):0)+")";
+  }
+  window.addEventListener("scroll",f,{passive:true}); f();
+})();
+
+/* Menu mobile */
+(function(){
+  var v=document.getElementById("voile");
+  function fermer(){v.classList.remove("ouvert");document.body.style.overflow="";}
+  document.getElementById("hamburger").addEventListener("click",function(){
+    v.classList.add("ouvert");document.body.style.overflow="hidden";
+  });
+  document.getElementById("fermer").addEventListener("click",fermer);
+  v.querySelectorAll("a").forEach(function(a){a.addEventListener("click",fermer);});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")fermer();});
+})();
+
+/* Apparitions */
+(function(){
+  var c=document.querySelectorAll(".monte");
+  if(reduit||!("IntersectionObserver" in window)){c.forEach(function(e){e.classList.add("vu");});return;}
+  var o=new IntersectionObserver(function(en){
+    en.forEach(function(e,i){
+      if(!e.isIntersecting)return;
+      var el=e.target;
+      setTimeout(function(){el.classList.add("vu");},i*80);
+      o.unobserve(el);
+    });
+  },{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+  c.forEach(function(e){o.observe(e);});
+})();
+
+/* Compteurs */
+(function(){
+  var c=document.querySelectorAll(".stat-val");
+  if(!c.length)return;
+  function poser(el){
+    var n=parseInt(el.dataset.cible,10);
+    el.textContent=el.dataset.groupe==="1"?n.toLocaleString("fr-FR"):n;
+  }
+  if(reduit||!("IntersectionObserver" in window)){c.forEach(poser);return;}
+  function animer(el){
+    var n=parseInt(el.dataset.cible,10), g=el.dataset.groupe==="1", t0=null;
+    function pas(t){
+      if(t0===null)t0=t;
+      var p=Math.min((t-t0)/1500,1), a=1-Math.pow(1-p,3), v=Math.round(n*a);
+      el.textContent=g?v.toLocaleString("fr-FR"):v;
+      if(p<1)requestAnimationFrame(pas); else poser(el);
+    }
+    requestAnimationFrame(pas);
+  }
+  var o=new IntersectionObserver(function(en){
+    en.forEach(function(e){if(e.isIntersecting){animer(e.target);o.unobserve(e.target);}});
+  },{threshold:.45});
+  c.forEach(function(e){o.observe(e);});
+})();
+
+/* Barres d'attributs */
+(function(){
+  var b=document.querySelectorAll(".barre i");
+  if(!b.length)return;
+  function poser(el){el.style.width=el.dataset.part+"%";}
+  if(reduit||!("IntersectionObserver" in window)){b.forEach(poser);return;}
+  var o=new IntersectionObserver(function(en){
+    en.forEach(function(e,i){
+      if(!e.isIntersecting)return;
+      var el=e.target;
+      setTimeout(function(){poser(el);},i*110);
+      o.unobserve(el);
+    });
+  },{threshold:.5});
+  b.forEach(function(e){o.observe(e);});
+})();
+</script>
+</body>
+</html>
